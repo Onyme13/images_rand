@@ -5,19 +5,22 @@ import time
 
 # Initialisation de pygame
 pygame.init()
-screen_size = (800, 480)  # Taille de l'écran
+screen_size = (1680, 1050)  # Taille de l'écran
 screen = pygame.display.set_mode(screen_size)
 
 # Initialisation des GPIO
-BUTTONS = [17, 18, 27, 22, 23]  # Adapte selon ton câblage
+BUTTONS = [4, 17, 27, 22, 18]  
 GPIO.setmode(GPIO.BCM)
 for button in BUTTONS:
-    GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # Pull-down pour détecter le 3.3V
+    GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Pull-down pour détecter le 3.3V
 
 # Charger les images statiques
 STATIC_IMAGES = [
     pygame.image.load("image1.jpg"),
-    pygame.image.load("image2.jpg")
+    pygame.image.load("image2.jpg"),
+    pygame.image.load("image3.jpg"),
+    pygame.image.load("image4.jpg"),
+    pygame.image.load("image5.jpg")
 ]
 
 # Liste des vidéos
@@ -78,9 +81,9 @@ def play_video(video_path):
 MAPPING = [
     {"type": "image", "data": STATIC_IMAGES[0]},
     {"type": "image", "data": STATIC_IMAGES[1]},
-    {"type": "video", "data": VIDEOS[0]},
-    {"type": "video", "data": VIDEOS[1]},
-    {"type": "video", "data": VIDEOS[2]}
+    {"type": "image", "data": STATIC_IMAGES[2]},
+    {"type": "image", "data": STATIC_IMAGES[3]},
+    {"type": "image", "data": STATIC_IMAGES[4]}
 ]
 
 # Boucle principale
